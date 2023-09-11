@@ -1,15 +1,20 @@
-# Conecte no MySQL via linha de comando
+#Conexão terminal Linux
+#Execute no Terminal o comando abaixo para entrar no MySQL 
 #/usr/bin/mysql -u root -p
 
-# Execute:
+#Dentro do MySQL Execute o que segue:
 SET GLOBAL local_infile = true;
-#exit;
 
-# Conecte novamente
+#Com o comando abaixo saia do MySQL
+exit;
+
+# Conecte novamente, agora inserido o novo comando
 #/usr/bin/mysql --local-infile=1 -u root -p
 
-#Carregue os Dados com seguinte comando. O comando tem de ser realizado para cada arquivo que a será carregado em sua respectiva tabela
+#Etapa de Carregamento de Dados.
+#O comando abaixo tem de ser realizado para cada "nomearquivo".
+#E essa massa de dados será carregada em sua respectiva "nometabela".
 
-LOAD DATA LOCAL INFILE '/home/nomeUsuario/nomeDiretorio/arquivo.csv'
+LOAD DATA LOCAL INFILE '/home/nomeUsuario/nomeDiretorio/nomearquivo.csv'
 INTO TABLE `nomeSchema`.`nomeTabela` CHARACTER SET UTF8
 FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;
