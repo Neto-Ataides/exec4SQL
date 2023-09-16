@@ -62,6 +62,26 @@ FROM payments;
 SELECT MAX(payment_amount) FROM exec4.payments;
 SELECT MIN(payment_amount) FROM exec4.payments;
 
+# 5- Qual tipo de driver (driver_type) fez o maior número de entregas?
+
+#Query criado por min
+
+SELECT driver_type, COUNT(delivery_id) AS num_entregas
+FROM deliveries d
+JOIN drivers dr 
+USING(driver_id)
+WHERE d.delivery_status = 'DELIVERED'
+GROUP BY driver_type
+ORDER BY num_entregas DESC;
+
+#Query criada pelo Curso
+
+SELECT driver_type, COUNT(delivery_id) AS num_entregas
+FROM exec4.deliveries deliveries, exec4.drivers drivers
+WHERE drivers.driver_id = deliveries.driver_id
+GROUP BY driver_type
+ORDER BY num_entregas DESC;
+
 
 
 
